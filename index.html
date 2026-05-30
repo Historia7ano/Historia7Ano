@@ -26,7 +26,7 @@
     }
   </script>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col pt-16">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col pt-32">
 
   <!-- TOP DECORATION/STATUS BAR AND HEADER (FIXED NAVBAR) -->
   <header class="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 h-16 flex items-center justify-between px-4 md:px-8 z-50">
@@ -72,6 +72,38 @@
       </div>
     </div>
   </header>
+
+  <!-- STICKY TOP NAVIGATION BAR (BELOW THE MAIN HEADER) -->
+  <nav class="fixed top-16 left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 h-14 flex items-center justify-around md:justify-center md:gap-10 px-4 z-40 shadow-sm overflow-x-auto whitespace-nowrap">
+    <button onclick="navigateTo('inicio')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none shrink-0" data-section="inicio">
+      <i data-lucide="compass" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Painel</span>
+    </button>
+    <button onclick="navigateTo('conteudos')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none shrink-0" data-section="conteudos">
+      <i data-lucide="book-open" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold font-sans">Aulas</span>
+    </button>
+    <button onclick="navigateTo('jogos')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none shrink-0" data-section="jogos">
+      <i data-lucide="gamepad-2" class="nav-link-icon w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Desafios</span>
+    </button>
+    <button onclick="navigateTo('timeline')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none shrink-0" data-section="timeline">
+      <i data-lucide="calendar" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Timeline</span>
+    </button>
+    <button onclick="navigateTo('galeria')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none shrink-0" data-section="galeria">
+      <i data-lucide="image" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold font-sans">Fontes</span>
+    </button>
+    <button onclick="navigateTo('quiz')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none shrink-0" data-section="quiz">
+      <i data-lucide="trophy" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Quiz</span>
+    </button>
+    <button onclick="navigateTo('progresso')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none shrink-0" data-section="progresso">
+      <i data-lucide="award" class="w-5 h-5"></i>
+      <span class="text-[10px] font-semibold">Visto</span>
+    </button>
+  </nav>
 
   <!-- WELCOME / LOGIN OVERLAY (FULLSCREEN IF NO USERNAME) -->
   <div id="welcome-portal" class="fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
@@ -135,40 +167,8 @@
     </div>
   </div>
 
-  <!-- STICKY BOTTOM NAVIGATION BAR FOR CONVENIENT MOBILE/DESKTOP SWITCHING -->
-  <nav class="fixed bottom-0 left-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 h-16 flex items-center justify-around px-2 z-40 shadow-lg">
-    <button onclick="navigateTo('inicio')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none" data-section="inicio">
-      <i data-lucide="compass" class="w-5 h-5"></i>
-      <span class="text-[9px] font-semibold">Painel</span>
-    </button>
-    <button onclick="navigateTo('conteudos')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none" data-section="conteudos">
-      <i data-lucide="book-open" class="w-5 h-5"></i>
-      <span class="text-[9px] font-semibold font-sans">Aulas</span>
-    </button>
-    <button onclick="navigateTo('jogos')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none" data-section="jogos">
-      <i data-lucide="gamepad-2" class="nav-link-icon w-5 h-5"></i>
-      <span class="text-[9px] font-semibold">Desafios</span>
-    </button>
-    <button onclick="navigateTo('timeline')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none" data-section="timeline">
-      <i data-lucide="calendar" class="w-5 h-5"></i>
-      <span class="text-[9px] font-semibold">Timeline</span>
-    </button>
-    <button onclick="navigateTo('galeria')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none" data-section="galeria">
-      <i data-lucide="image" class="w-5 h-5"></i>
-      <span class="text-[9px] font-semibold font-sans">Fontes</span>
-    </button>
-    <button onclick="navigateTo('quiz')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none" data-section="quiz">
-      <i data-lucide="trophy" class="w-5 h-5"></i>
-      <span class="text-[9px] font-semibold">Quiz</span>
-    </button>
-    <button onclick="navigateTo('progresso')" class="nav-link flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-amber-500 px-3 cursor-pointer select-none" data-section="progresso">
-      <i data-lucide="award" class="w-5 h-5"></i>
-      <span class="text-[9px] font-semibold">Visto</span>
-    </button>
-  </nav>
-
   <!-- MAIN APP CONTAINER -->
-  <main class="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full pb-24">
+  <main class="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full pb-10">
 
     <!-- 1. HOME LAYOUT -->
     <section id="section-inicio" class="section-content hidden space-y-6">
