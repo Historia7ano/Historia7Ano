@@ -894,7 +894,22 @@
   <script id="js-app-controller">
     // --- COMPATIBILITY IMAGE PROXY BYPASS ---
     function getProxiedImageUrl(url) {
-      return url || "";
+      if (!url) return "";
+      if (!url.startsWith("http://") && !url.startsWith("https://")) return url;
+      
+      // If it's a Wikimedia or Wikipedia image, route through images.weserv.nl proxy
+      if (url.includes("wikimedia.org") || url.includes("wikipedia.org")) {
+        try {
+          // Decode first to prevent double-encoding %C3%A3 etc.
+          let decoded = decodeURIComponent(url);
+          let cleanUrl = decoded.replace(/^https?:\/\//, "");
+          return "https://images.weserv.nl/?url=" + encodeURIComponent(cleanUrl);
+        } catch (e) {
+          let cleanUrl = url.replace(/^https?:\/\//, "");
+          return "https://images.weserv.nl/?url=" + encodeURIComponent(cleanUrl);
+        }
+      }
+      return url;
     }
 
     // --- GLOBAL PLAYER STATE ---
@@ -1967,7 +1982,7 @@
               </div>
 
               <!-- High resolution image overlay -->
-              <img src="${getProxiedImageUrl(ev.image)}" referrerpolicy="no-referrer" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105 z-10" alt="${ev.title}" onerror="this.onerror=null; this.src=getProxiedImageUrl('https://images.unsplash.com/photo-1599727497184-b009e992a2a7?q=80&w=800&auto=format&fit=crop');">
+              <img src="${getProxiedImageUrl(ev.image)}" referrerpolicy="no-referrer" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105 z-10" alt="${ev.title}" onerror="if(this.src && !this.src.includes('unsplash.com')){ this.src=getProxiedImageUrl('https://images.unsplash.com/photo-1599727497184-b009e992a2a7?q=80&w=800&auto=format&fit=crop'); } else { this.style.display='none'; }">
               
               <!-- Ambient vignette layer on top of image -->
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none z-20"></div>
@@ -2243,7 +2258,7 @@
               return `
                 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition">
                   <div class="relative h-48 w-full bg-slate-950 overflow-hidden select-none">
-                    <img src="${getProxiedImageUrl(activeUrl)}" referrerpolicy="no-referrer" alt="${s.title}" onerror="this.src=getProxiedImageUrl('${s.imgFallback}')" class="w-full h-full object-cover opacity-80" />
+                    <img src="${getProxiedImageUrl(activeUrl)}" referrerpolicy="no-referrer" alt="${s.title}" onerror="if(this.src && !this.src.includes('unsplash.com') && this.src !== getProxiedImageUrl('${s.imgFallback}')){ this.src=getProxiedImageUrl('${s.imgFallback}'); } else if(this.src && !this.src.includes('unsplash.com')){ this.src='https://images.unsplash.com/photo-1599727497184-b009e992a2a7?q=80&w=800&auto=format&fit=crop'; } else { this.style.display='none'; }" class="w-full h-full object-cover opacity-80" />
                     <!-- Meta label overlays -->
                     <span class="absolute top-3 left-3 bg-slate-950/70 border border-slate-800 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-lg">${s.type}</span>
                     <span class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 font-bold px-2.5 py-0.5 rounded-lg text-[9px] font-mono leading-none">${s.era}</span>
@@ -2310,7 +2325,7 @@
         <!-- Scrollable Modal Content body -->
         <div class="p-6 overflow-y-auto space-y-6 flex-grow text-slate-800 dark:text-slate-200">
           <div class="h-64 w-full bg-slate-950 overflow-hidden rounded-2xl select-none flex justify-center items-center">
-            <img src="${getProxiedImageUrl(activeUrl)}" referrerpolicy="no-referrer" alt="${s.title}" onerror="this.src=getProxiedImageUrl('${s.imgFallback}')" class="w-full h-full object-cover" />
+            <img src="${getProxiedImageUrl(activeUrl)}" referrerpolicy="no-referrer" alt="${s.title}" onerror="if(this.src && !this.src.includes('unsplash.com') && this.src !== getProxiedImageUrl('${s.imgFallback}')){ this.src=getProxiedImageUrl('${s.imgFallback}'); } else if(this.src && !this.src.includes('unsplash.com')){ this.src='https://images.unsplash.com/photo-1599727497184-b009e992a2a7?q=80&w=800&auto=format&fit=crop'; } else { this.style.display='none'; }" class="w-full h-full object-cover" />
           </div>
 
           <div class="space-y-2">
