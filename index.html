@@ -1492,7 +1492,13 @@
         gArea.innerHTML = `
           <div class="max-w-2xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6 shadow-md">
             <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-3">
-              <span class="font-bold uppercase tracking-wider text-rose-500">Desafio Verdadeiro ou Falso</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="quitActiveGame()" class="text-slate-400 hover:text-rose-500 transition font-bold flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar
+                </button>
+                <span class="text-slate-200 dark:text-slate-800 font-normal">|</span>
+                <span class="font-bold uppercase tracking-wider text-rose-500">Verdadeiro ou Falso</span>
+              </div>
               <span class="font-mono">Carta ${vfIndex+1} de ${VF_QUESTIONS.length}</span>
             </div>
 
@@ -1599,8 +1605,14 @@
       if (matchPairsLeft.length > 0) {
         gArea.innerHTML = `
           <div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 md:p-8 rounded-3xl space-y-6 shadow-sm">
-            <div class="border-b border-slate-100 dark:border-slate-800 pb-3 flex justify-between items-center">
-              <span class="text-xs font-mono font-bold text-blue-500 uppercase">Correspondência de Conceitos Históricos</span>
+            <div class="border-b border-slate-100 dark:border-slate-800 pb-3 flex justify-between items-center mr-1">
+              <div class="flex items-center gap-1.5">
+                <button onclick="quitActiveGame()" class="text-slate-400 hover:text-blue-500 transition font-bold flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar
+                </button>
+                <span class="text-slate-200 dark:text-slate-800 font-normal">|</span>
+                <span class="text-xs font-mono font-bold text-blue-500 uppercase">Correspondência de Conceitos</span>
+              </div>
               <span class="text-xs text-slate-400 font-mono">${matchPairsLeft.length} conceitos restantes</span>
             </div>
 
@@ -1721,7 +1733,13 @@
         gArea.innerHTML = `
           <div class="max-w-xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl shadow-lg space-y-6">
             <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-3">
-              <span class="font-bold text-amber-500 uppercase font-mono">Fuga do Castelo da Fundação</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="quitActiveGame()" class="text-slate-400 hover:text-amber-500 transition font-bold flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar
+                </button>
+                <span class="text-slate-200 dark:text-slate-800 font-normal">|</span>
+                <span class="font-bold text-amber-500 uppercase font-mono">Fuga do Castelo</span>
+              </div>
               <span>Sala 1 de 3</span>
             </div>
 
@@ -1743,7 +1761,13 @@
         gArea.innerHTML = `
           <div class="max-w-xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl shadow-lg space-y-6">
             <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-3">
-              <span class="font-bold text-amber-500 uppercase font-mono">Fuga do Castelo da Fundação</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="quitActiveGame()" class="text-slate-400 hover:text-amber-500 transition font-bold flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar
+                </button>
+                <span class="text-slate-200 dark:text-slate-800 font-normal">|</span>
+                <span class="font-bold text-amber-500 uppercase font-mono">Fuga do Castelo</span>
+              </div>
               <span>Sala 2 de 3</span>
             </div>
 
@@ -1765,7 +1789,13 @@
         gArea.innerHTML = `
           <div class="max-w-xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl shadow-lg space-y-6">
             <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-3">
-              <span class="font-bold text-amber-500 uppercase font-mono">Fuga do Castelo da Fundação</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="quitActiveGame()" class="text-slate-400 hover:text-amber-500 transition font-bold flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar
+                </button>
+                <span class="text-slate-200 dark:text-slate-800 font-normal">|</span>
+                <span class="font-bold text-amber-500 uppercase font-mono">Fuga do Castelo</span>
+              </div>
               <span>Sala 3 de 3</span>
             </div>
 
